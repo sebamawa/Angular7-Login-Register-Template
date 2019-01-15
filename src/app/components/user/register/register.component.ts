@@ -13,7 +13,7 @@ import { SweetAlert2 } from "../../../utilities/sweetalert2/sweetalert2";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  private user: User = {
+  public user: User = {
     realm: "",
     email: "",
     password: ""

@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   public isError: boolean = false;
   public msgToUser: string = '';
 
-  private user: User = {
+  public user: User = {
     email: '',
     password: ''
   }
