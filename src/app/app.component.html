@@ -1,0 +1,16 @@
+<div class="jumbotron jumbotron-fluid">
+  <app-navbar></app-navbar>
+
+  <div class="container">
+
+    <!-- router -->
+    <router-outlet></router-outlet>
+
+    <!-- muestra animacion de carga (para requests http. Se usa junto al servicio PreloaderService) -->
+    <div id="preloader" style="display: none">
+        <div class="spinner"></div>
+    </div>
+
+  </div>
+</div>
+

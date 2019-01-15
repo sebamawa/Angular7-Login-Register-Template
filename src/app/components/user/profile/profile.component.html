@@ -1,0 +1,11 @@
+<section id="profile">
+  <p>
+    Name: {{ userLogged.realm }}
+  </p>
+  <p>
+    Email: {{ userLogged.email }}
+  </p>
+  <form #formDeleteUser="ngForm" (ngSubmit)="onDeleteUser()">
+    <button type="submit" class="btn btn-lg btn-danger">Delete User</button>
+  </form>
+</section>
