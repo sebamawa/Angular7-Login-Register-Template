@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['/user/login']); // una vez registrado se redirige a pagina de login
           PreloaderService.hidePreloader();
           // alert('Registro correcto. Ahora debe loguearse.');
-          SweetAlert2.showModalSweetAlert("Registro correcto!!!", "Ahora debe loguearse", "success");
+          SweetAlert2.showModalSweetAlert("Registro correcto!", "Ahora debe loguearse", "success");
         },
         (statusText: any) => {
           console.log(statusText);
