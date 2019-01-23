@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {error} from "selenium-webdriver";
 import {User} from "../../../models/User";
 import {AuthService} from "../../../services/auth.service";
 import {Router} from "@angular/router";
@@ -41,12 +40,14 @@ export class LoginComponent implements OnInit {
             this.authService.isLogged.next(true);
             this.authService.userLogged.next(usr);
             this.isError = false;
-            this.router.navigate(['/user/profile']);
             // location.reload();
             PreloaderService.hidePreloader(); // se oculta mensaje de carga
+            this.loading = false;
+            this.router.navigate(['/user/profile']);
           },
           error => {
-            this.onMessage('Login error!');
+            this.onMessage(error.message);
+            // console.log(error);
             // alert("Hubo un error en el login."); // en principio se ejecuta primero
             PreloaderService.hidePreloader();
             this.loading = false;

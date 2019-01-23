@@ -40,8 +40,9 @@ export class RegisterComponent implements OnInit {
           SweetAlert2.showModalSweetAlert("Registro correcto!", "Ahora debe loguearse", "success");
         },
         (statusText: any) => {
-          console.log(statusText);
-          this.onMessage("Register Error!: " + statusText.error.error.message);
+          // console.log(statusText);
+          // this.onMessage("Register Error!: " + statusText.error.error.message);
+          this.onMessage("Register Error");
           PreloaderService.hidePreloader();
           // alert("Hubo un error en el registro " + error);
          }
