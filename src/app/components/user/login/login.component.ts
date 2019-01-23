@@ -15,6 +15,7 @@ import {PreloaderService} from "../../../services/preloader.service";
 export class LoginComponent implements OnInit {
   public isError: boolean = false;
   public msgToUser: string = '';
+  public loading: boolean = false; // para mostrar mj de carga (variante a usar el servicio PreloaderService)
 
   public user: User = {
     email: '',
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
   onLogin(form : NgForm){
     if (form.valid) {
       PreloaderService.showPreloader(); // se muestra mensaje de carga
+      this.loading = true;
       return this.authService
         .loginUser(this.user.email, this.user.password)
         .subscribe(
@@ -47,6 +49,7 @@ export class LoginComponent implements OnInit {
             this.onMessage('Login error!');
             // alert("Hubo un error en el login."); // en principio se ejecuta primero
             PreloaderService.hidePreloader();
+            this.loading = false;
           }
         );
     } else {
