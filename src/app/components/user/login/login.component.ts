@@ -1,3 +1,4 @@
+import { ErrorIntercepterService } from './../../../services/error401/error-intercepter.service';
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../../models/User";
 import {AuthService} from "../../../services/auth.service";
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
     password: ''
   }
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private error401: ErrorIntercepterService, private router: Router) {
     console.log("Instancia creada de LoginComponent");
   }
 
@@ -48,7 +49,11 @@ export class LoginComponent implements OnInit {
           error => {
             this.onMessage(error.message);
             // console.log(error);
-            // alert("Hubo un error en el login."); // en principio se ejecuta primero
+            // if (error.status === 0) { // server down
+            //   this.onMessage("Connection server error.");
+            // } else {
+            //   this.onMessage(error.message);
+            // }
             PreloaderService.hidePreloader();
             this.loading = false;
           }
