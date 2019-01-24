@@ -1,4 +1,4 @@
-import { ErrorIntercepterService } from './../../../services/error401/error-intercepter.service';
+// import { ErrorIntercepterService } from './../../../services/error401/error-intercepter.service';
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../../models/User";
 import {AuthService} from "../../../services/auth.service";
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     password: ''
   }
 
-  constructor(private authService: AuthService, private error401: ErrorIntercepterService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router) {
     console.log("Instancia creada de LoginComponent");
   }
 
