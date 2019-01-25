@@ -43,7 +43,7 @@ export class NavbarComponent implements OnInit {
         PreloaderService.hidePreloader();
       },
         error => {
-          alert("Hubo un error en el logout");
+          // alert("Hubo un error en el logout");
           location.reload();
           PreloaderService.hidePreloader();
         }
