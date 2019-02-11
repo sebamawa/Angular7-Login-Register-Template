@@ -22,8 +22,8 @@ export class AuthService {
 
   // register user against loopback api rest
   registerUser(name: string, email: string, password: string) {
-    // const url_api = 'http://localhost:3000/api/users'; // local
-    const url_api = 'https://angular-loopback-template.herokuapp.com/api/users'; // loopback api hosteada en heroku
+    const url_api = 'http://localhost:3000/api/users'; // local
+    // const url_api = 'https://angular-loopback-template.herokuapp.com/api/users'; // loopback api hosteada en heroku
     return this.http.post<User>(
       url_api,
       {
@@ -74,8 +74,8 @@ export class AuthService {
   // desloguea desde el server
   logoutUser() {
     let accessToken = localStorage.getItem('accessToken');
-    // const url_api = `http://localhost:3000/api/users/logout?access_token=${accessToken}`; // local
-    const url_api = `https://angular-loopback-template.herokuapp.com/api/users/logout?access_token=${accessToken}`; // api en heroku
+    const url_api = `http://localhost:3000/api/users/logout?access_token=${accessToken}`; // local
+    // const url_api = `https://angular-loopback-template.herokuapp.com/api/users/logout?access_token=${accessToken}`; // api en heroku
     localStorage.removeItem('accessToken');
     localStorage.removeItem('currentUser');
     return this.http.post<User>(
@@ -85,8 +85,8 @@ export class AuthService {
 
   deleteUser(id: number) {
     let accessToken = localStorage.getItem('accessToken');
-    // const url_api = `http://localhost:3000/api/Users/${id}?access_token=${accessToken}`; // local
-    const url_api = `https://angular-loopback-template.herokuapp.com/api/Users/${id}?access_token=${accessToken}`; // api en heroku
+    const url_api = `http://localhost:3000/api/Users/${id}?access_token=${accessToken}`; // local
+    // const url_api = `https://angular-loopback-template.herokuapp.com/api/Users/${id}?access_token=${accessToken}`; // api en heroku
     console.log(url_api);
     localStorage.removeItem('accessToken');
     localStorage.removeItem('currentUser');

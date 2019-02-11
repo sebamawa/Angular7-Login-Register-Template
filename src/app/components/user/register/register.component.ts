@@ -13,7 +13,7 @@ import { SweetAlert2 } from "../../../utilities/sweetalert2/sweetalert2";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  private user: User = {
+  public user: User = {
     realm: "",
     email: "",
     password: ""
@@ -37,11 +37,12 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['/user/login']); // una vez registrado se redirige a pagina de login
           PreloaderService.hidePreloader();
           // alert('Registro correcto. Ahora debe loguearse.');
-          SweetAlert2.showModalSweetAlert("Registro correcto!!!", "Ahora debe loguearse", "success");
+          SweetAlert2.showModalSweetAlert("Registro correcto!", "Ahora debe loguearse", "success");
         },
-        (statusText: any) => {
-          console.log(statusText);
-          this.onMessage("Register Error!: " + statusText.error.error.message);
+        (error: any) => {
+          // console.log(statusText);
+          // this.onMessage("Register Error!: " + statusText.error.error.message);
+          this.onMessage(error.message);
           PreloaderService.hidePreloader();
           // alert("Hubo un error en el registro " + error);
          }

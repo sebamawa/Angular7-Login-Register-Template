@@ -1,5 +1,5 @@
+// import { ErrorIntercepterService } from './../../../services/error401/error-intercepter.service';
 import { Component, OnInit } from '@angular/core';
-import {error} from "selenium-webdriver";
 import {User} from "../../../models/User";
 import {AuthService} from "../../../services/auth.service";
 import {Router} from "@angular/router";
@@ -15,8 +15,9 @@ import {PreloaderService} from "../../../services/preloader.service";
 export class LoginComponent implements OnInit {
   public isError: boolean = false;
   public msgToUser: string = '';
+  public loading: boolean = false; // para mostrar mj de carga (variante a usar el servicio PreloaderService)
 
-  private user: User = {
+  public user: User = {
     email: '',
     password: ''
   }
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
   onLogin(form : NgForm){
     if (form.valid) {
       PreloaderService.showPreloader(); // se muestra mensaje de carga
+      this.loading = true;
       return this.authService
         .loginUser(this.user.email, this.user.password)
         .subscribe(
@@ -39,14 +41,21 @@ export class LoginComponent implements OnInit {
             this.authService.isLogged.next(true);
             this.authService.userLogged.next(usr);
             this.isError = false;
-            this.router.navigate(['/user/profile']);
             // location.reload();
             PreloaderService.hidePreloader(); // se oculta mensaje de carga
+            this.loading = false;
+            this.router.navigate(['/user/profile']);
           },
           error => {
-            this.onMessage('Login error!');
-            // alert("Hubo un error en el login."); // en principio se ejecuta primero
+            this.onMessage(error.message);
+            // console.log(error);
+            // if (error.status === 0) { // server down
+            //   this.onMessage("Connection server error.");
+            // } else {
+            //   this.onMessage(error.message);
+            // }
             PreloaderService.hidePreloader();
+            this.loading = false;
           }
         );
     } else {
