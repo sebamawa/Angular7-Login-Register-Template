@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ng b --prod --base-href https://sebamawa.github.io/Angular7-Login-Register-Template/ && npx ngh --dir=dist/angular7-login-register-template"
   },
   "private": true,
   "dependencies": {
