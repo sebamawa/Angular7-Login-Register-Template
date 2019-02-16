@@ -22,7 +22,6 @@ export class AuthService {
 
   // register user against loopback api rest
   registerUser(name: string, email: string, password: string) {
-    // esto es una prueba
     const url_api = 'http://localhost:3000/api/users'; // local
     // const url_api = 'https://angular-loopback-template.herokuapp.com/api/users'; // loopback api hosteada en heroku
     return this.http.post<User>(
@@ -37,8 +36,8 @@ export class AuthService {
   }
 
   loginUser(email: string, password: string): Observable<User> {
-    // const url_api = 'http://localhost:3000/api/Users/login?include=user'; // local
-    const url_api = 'https://angular-loopback-template.herokuapp.com/api/Users/login?include=user'; // api heroku
+    const url_api = 'http://localhost:3000/api/Users/login?include=user'; // local
+    // const url_api = 'https://angular-loopback-template.herokuapp.com/api/Users/login?include=user'; // api heroku
     return this.http.post<User>(
       url_api,
       { email, password },  // forma corta de pasar objeto
